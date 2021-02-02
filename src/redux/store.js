@@ -22,12 +22,6 @@ const middleware = [
   logger,
 ];
 
-// const rootReducer = combineReducers({
-//   contacts: persistReducer(persistConfig, contactsReducer),
-// });
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 const contactsPersistConfig = {
   key: 'contacts',
   storage,
