@@ -1,7 +1,7 @@
 // import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import store from './redux/store';
+// import store from './redux/store';
 // import shortid from 'shortid';
 import Form from './Components/Form/Form';
 import ContactList from './Components/ContactList/ContactList';
@@ -18,8 +18,7 @@ export default function App() {
   // useEffect(() => {
   //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
-  const state = store.getState();
-  console.log(state);
+  // const state = store.getState();
 
   return (
     <Container>
