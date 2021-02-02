@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import contactActions from '../../redux/contacts/contacts-actions';
 
 import s from './Form.module.css';
@@ -27,6 +29,14 @@ function Form({ onSubmit }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (name === '' || number === '') {
+      toast.info('Please fill all fields');
+      return;
+    } else if (!/\d{3}[-]\d{2}[-]\d{2}/g.test(number)) {
+      toast.error('Enter the correct  phone number');
+      return;
+    }
     onSubmit(name, number);
     setName('');
     setNumber('');
