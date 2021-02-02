@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-
 import contactActions from '../../redux/contacts/contacts-actions';
 
 import s from './Form.module.css';
 import IconButton from '../IconButton/IconButton';
 import { ReactComponent as AddIcon } from '../../icons/add.svg';
 
-function Form({ onSubmit }) {
+export default function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -35,9 +35,11 @@ function Form({ onSubmit }) {
       return;
     } else if (!/\d{3}[-]\d{2}[-]\d{2}/g.test(number)) {
       toast.error('Enter the correct  phone number');
+      setName('');
+      setNumber('');
       return;
     }
-    onSubmit(name, number);
+    dispatch(contactActions.addContact(name, number));
     setName('');
     setNumber('');
   };
@@ -74,7 +76,7 @@ function Form({ onSubmit }) {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  onSubmit: (name, number) => dispatch(contactActions.addContact(name, number)),
-});
-export default connect(null, mapDispatchToProps)(Form);
+// const mapDispatchToProps = dispatch => ({
+//   onSubmit: (name, number) => dispatch(contactActions.addContact(name, number)),
+// });
+// export default connect(null, mapDispatchToProps)(Form);
