@@ -75,8 +75,3 @@ export default function Form() {
     </form>
   );
 }
-
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: (name, number) => dispatch(contactActions.addContact(name, number)),
-// });
-// export default connect(null, mapDispatchToProps)(Form);
